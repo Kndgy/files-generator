@@ -3,7 +3,7 @@ const fsp = fs.promises;
 
 const data = [
     {
-        "output": "output1"
+        "output": "title @p title waves 1 started\nsummon bridge:mob_checker\nsummon armor_stand ~ ~ ~"
     },
     {
         "output": "output2"
@@ -23,9 +23,10 @@ async function createOutputFiles() {
 
     await fsp.mkdir(folderName);
 
-    for (let i = 0; i < data.length; i++) {
-        const fileName = `${folderName}/output${i + 1}.mcfunction`;
-        await fsp.writeFile(fileName, data[i].output);
+    for (let i = 0; i < 3; i++) {
+        const fileName = `${folderName}/waves${i + 1}.mcfunction`;
+        await fsp.writeFile(fileName, `${folderName}/title @p title waves ${i +1 } started\nsummon bridge:mob_checker\nsummon armor_stand ~ ~ ~`);
+        // await fsp.writeFile(fileName, data[i].output);
     }
 }
 
